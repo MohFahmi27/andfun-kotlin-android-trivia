@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
 import com.example.android.navigation.databinding.FragmentGameOverBinding
 
 class GameOverFragment : Fragment() {
@@ -31,8 +31,11 @@ class GameOverFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentGameOverBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_game_over, container, false)
-        // TODO (05) Add an onClick Handler for the tryAgain button that navigates to the gameFragment
-        // using action_gameOverFragment_to_gameFragment
+//        THIS setOnClickListener WILL BRING THE EXCLUSIVE NAVIGATION (INTO THE GameFragment.kt)
+//        NOTE : IF WE USING BACK BUTTON IT WILL TAKE TO INCLUSIVE (INTO THE TitleFragment.kt)
+        binding.tryAgainButton.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_gameOverFragment_to_gameFragment)
+        )
         return binding.root
     }
 }

@@ -33,7 +33,7 @@ import androidx.navigation.findNavController
 import com.example.android.navigation.databinding.FragmentGameWonBinding
 import android.content.pm.ResolveInfo
 import android.content.pm.PackageManager
-
+import androidx.navigation.Navigation
 
 
 class GameWonFragment : Fragment() {
@@ -42,8 +42,11 @@ class GameWonFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_game_won, container, false)
-        // TODO (06) Add an onClick Handler for the nextMatch button that navigates to the gameFragment
-        // using action_gameWonFragment_to_gameFragment
+//        THIS setOnclickListener WILL BRING THE EXCLUSIVE NAVIGATION (INTO THE GameFragment.kt)
+//        NOTE : IF WE USING BACK BUTTON IT WILL TAKE TO INCLUSIVE (INTO THE TitleFragment.kt)
+        binding.nextMatchButton.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.action_gameWonFragment_to_gameFragment)
+        )
         return binding.root
     }
 }
